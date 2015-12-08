@@ -196,13 +196,20 @@ public abstract class AbstractWheel extends View {
                     mScrollingOffset = -dimension;
                     mScroller.stopScrolling();
                 }
+
+                notifyScrollingListenersAboutScroll();
             }
 
             public void onFinished() {
+
                 if (mIsScrollingPerformed) {
                     notifyScrollingListenersAboutEnd();
                     mIsScrollingPerformed = false;
                     onScrollFinished();
+                }
+
+                if (!mScroller.isJustifyEnabled) {
+                    return;
                 }
 
                 mScrollingOffset = 0;
@@ -221,8 +228,8 @@ public abstract class AbstractWheel extends View {
         mScroller.setJustifyEnabled(enabled);
     }
 
-    public int getScrollOffset() {
-        return mScrollingOffset;
+    public int getCurrentPosition() {
+        return mScroller.getFinalScrollerPosition();
     }
 
     @Override
@@ -693,6 +700,12 @@ public abstract class AbstractWheel extends View {
     protected void notifyScrollingListenersAboutStart() {
         for (OnWheelScrollListener listener : scrollingListeners) {
             listener.onScrollingStarted(this);
+        }
+    }
+
+    protected void notifyScrollingListenersAboutScroll() {
+        for (OnWheelScrollListener listener : scrollingListeners) {
+            listener.onScrolling(this);
         }
     }
 

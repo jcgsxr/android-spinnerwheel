@@ -1,17 +1,17 @@
 package antistatic.spinnerwheel.demo;
 
-import antistatic.spinnerwheel.AbstractWheel;
-import antistatic.spinnerwheel.OnWheelChangedListener;
-import antistatic.spinnerwheel.OnWheelScrollListener;
-import antistatic.spinnerwheel.adapters.AbstractWheelTextAdapter;
-import antistatic.spinnerwheel.adapters.ArrayWheelAdapter;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import antistatic.spinnerwheel.AbstractWheel;
+import antistatic.spinnerwheel.OnWheelChangedListener;
+import antistatic.spinnerwheel.OnWheelScrollListener;
+import antistatic.spinnerwheel.adapters.AbstractWheelTextAdapter;
+import antistatic.spinnerwheel.adapters.ArrayWheelAdapter;
 
 public class CitiesActivity extends Activity {
     // Scrolling flag
@@ -61,6 +61,7 @@ public class CitiesActivity extends Activity {
         });
         
         country.addScrollingListener( new OnWheelScrollListener() {
+            public void onScrolling(AbstractWheel wheel) {}
             public void onScrollingStarted(AbstractWheel wheel) {
                 scrolling = true;
             }

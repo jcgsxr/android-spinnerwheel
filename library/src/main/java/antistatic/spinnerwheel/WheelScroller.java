@@ -92,7 +92,7 @@ public abstract class WheelScroller {
 
     // Scrolling
     private GestureDetector gestureDetector;
-    protected Scroller scroller;
+    public Scroller scroller;
     private int lastScrollPosition;
     private float lastTouchedPosition;
     private boolean isScrollingPerformed;
@@ -265,7 +265,11 @@ public abstract class WheelScroller {
         if (isJustifyEnabled) {
             listener.onJustify();
             setNextMessage(MESSAGE_JUSTIFY);
+        } else {
+//            setNextMessage(MESSAGE_JUSTIFY);
+            finishScrolling();
         }
+
     }
 
     /**
@@ -288,11 +292,11 @@ public abstract class WheelScroller {
         }
     }
 
-    protected abstract int getCurrentScrollerPosition();
+    public abstract int getCurrentScrollerPosition();
 
-    protected abstract int getFinalScrollerPosition();
+    public abstract int getFinalScrollerPosition();
 
-    protected abstract float getMotionEventPosition(MotionEvent event);
+    public abstract float getMotionEventPosition(MotionEvent event);
 
     protected abstract void scrollerStartScroll(int distance, int time);
 

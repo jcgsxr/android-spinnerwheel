@@ -39,4 +39,6 @@ public interface OnWheelScrollListener {
 	 * @param wheel the spinnerwheel view whose state has changed.
 	 */
 	void onScrollingFinished(AbstractWheel wheel);
+
+	void onScrolling(AbstractWheel wheel);
 }

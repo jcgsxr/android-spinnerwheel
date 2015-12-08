@@ -1,9 +1,5 @@
 package antistatic.spinnerwheel.demo;
 
-import antistatic.spinnerwheel.AbstractWheel;
-import antistatic.spinnerwheel.OnWheelChangedListener;
-import antistatic.spinnerwheel.OnWheelScrollListener;
-import antistatic.spinnerwheel.adapters.NumericWheelAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +7,11 @@ import android.view.View.OnClickListener;
 import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
+
+import antistatic.spinnerwheel.AbstractWheel;
+import antistatic.spinnerwheel.OnWheelChangedListener;
+import antistatic.spinnerwheel.OnWheelScrollListener;
+import antistatic.spinnerwheel.adapters.NumericWheelAdapter;
 
 public class ProgrammaticSwitchingActivity extends Activity {
     @Override
@@ -41,6 +42,7 @@ public class ProgrammaticSwitchingActivity extends Activity {
     
     // Wheel scrolled listener
     OnWheelScrollListener scrolledListener = new OnWheelScrollListener() {
+        public void onScrolling(AbstractWheel wheel) {}
         public void onScrollingStarted(AbstractWheel wheel) {
             wheelScrolled = true;
         }

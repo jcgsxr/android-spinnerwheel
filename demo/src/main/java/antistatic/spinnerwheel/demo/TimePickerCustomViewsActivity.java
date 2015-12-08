@@ -3,6 +3,7 @@ package antistatic.spinnerwheel.demo;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import antistatic.spinnerwheel.AbstractWheel;
+import antistatic.spinnerwheel.OnWheelScrollListener;
 import antistatic.spinnerwheel.adapters.AbstractWheelTextAdapter;
 import antistatic.spinnerwheel.adapters.ArrayWheelAdapter;
 import antistatic.spinnerwheel.adapters.NumericWheelAdapter;
@@ -30,7 +32,31 @@ public class TimePickerCustomViewsActivity extends Activity {
         hourAdapter.setItemTextResource(R.id.text);
         hours.setViewAdapter(hourAdapter);
         hours.setSnappingEnabled(false);
-    
+
+//        hours.addChangingListener(new OnWheelChangedListener() {
+//            @Override
+//            public void onChanged(AbstractWheel wheel, int oldValue, int newValue) {
+//                Log.d("wheel offset", String.valueOf(wheel.getScrollOffset()));
+//            }
+//        });
+
+        hours.addScrollingListener(new OnWheelScrollListener() {
+            @Override
+            public void onScrollingStarted(AbstractWheel wheel) {
+
+            }
+
+            @Override
+            public void onScrollingFinished(AbstractWheel wheel) {
+
+            }
+
+            @Override
+            public void onScrolling(AbstractWheel wheel) {
+                Log.d("wheel offset", String.valueOf(wheel.getCurrentPosition()));
+            }
+        });
+
         final AbstractWheel mins = (AbstractWheel) findViewById(R.id.mins);
         NumericWheelAdapter minAdapter = new NumericWheelAdapter(this, 0, 59, "%02d");
         minAdapter.setItemResource(R.layout.wheel_text_centered_dark_back);

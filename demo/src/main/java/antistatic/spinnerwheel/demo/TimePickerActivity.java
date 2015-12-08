@@ -73,6 +73,7 @@ public class TimePickerActivity extends Activity {
         mins.addClickingListener(click);
 
         OnWheelScrollListener scrollListener = new OnWheelScrollListener() {
+            public void onScrolling(AbstractWheel wheel) {}
             public void onScrollingStarted(AbstractWheel wheel) {
                 timeScrolled = true;
             }
