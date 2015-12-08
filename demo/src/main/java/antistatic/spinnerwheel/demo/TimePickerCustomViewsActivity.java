@@ -34,13 +34,6 @@ public class TimePickerCustomViewsActivity extends Activity {
         hours.setViewAdapter(hourAdapter);
         hours.setSnappingEnabled(false);
 
-        hours.addChangingListener(new OnWheelChangedListener() {
-            @Override
-            public void onChanged(AbstractWheel wheel, int oldValue, int newValue) {
-                Log.d("value changed", String.valueOf(newValue));
-            }
-        });
-
         hours.addScrollingListener(new OnWheelScrollListener() {
             @Override
             public void onScrollingStarted(AbstractWheel wheel) {
@@ -66,10 +59,18 @@ public class TimePickerCustomViewsActivity extends Activity {
 
         final AbstractWheel ampm = (AbstractWheel) findViewById(R.id.ampm);
         ArrayWheelAdapter<String> ampmAdapter =
-            new ArrayWheelAdapter<String>(this, new String[] {"01", "02", "03"});
+            new ArrayWheelAdapter<String>(this, new String[] {"100", "","","","", "105", "","","","", "110"});
         ampmAdapter.setItemResource(R.layout.wheel_text_centered);
         ampmAdapter.setItemTextResource(R.id.text);
         ampm.setViewAdapter(ampmAdapter);
+        ampm.setSnappingEnabled(false);
+
+        ampm.addChangingListener(new OnWheelChangedListener() {
+            @Override
+            public void onChanged(AbstractWheel wheel, int oldValue, int newValue) {
+                Log.d("value changed", String.valueOf(newValue));
+            }
+        });
 
         // set current time
         Calendar calendar = Calendar.getInstance(Locale.US);
