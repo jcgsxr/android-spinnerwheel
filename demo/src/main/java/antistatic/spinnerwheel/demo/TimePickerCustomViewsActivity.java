@@ -14,6 +14,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import antistatic.spinnerwheel.AbstractWheel;
+import antistatic.spinnerwheel.OnWheelChangedListener;
 import antistatic.spinnerwheel.OnWheelScrollListener;
 import antistatic.spinnerwheel.adapters.AbstractWheelTextAdapter;
 import antistatic.spinnerwheel.adapters.ArrayWheelAdapter;
@@ -33,12 +34,12 @@ public class TimePickerCustomViewsActivity extends Activity {
         hours.setViewAdapter(hourAdapter);
         hours.setSnappingEnabled(false);
 
-//        hours.addChangingListener(new OnWheelChangedListener() {
-//            @Override
-//            public void onChanged(AbstractWheel wheel, int oldValue, int newValue) {
-//                Log.d("wheel offset", String.valueOf(wheel.getScrollOffset()));
-//            }
-//        });
+        hours.addChangingListener(new OnWheelChangedListener() {
+            @Override
+            public void onChanged(AbstractWheel wheel, int oldValue, int newValue) {
+                Log.d("value changed", String.valueOf(newValue));
+            }
+        });
 
         hours.addScrollingListener(new OnWheelScrollListener() {
             @Override
@@ -53,7 +54,7 @@ public class TimePickerCustomViewsActivity extends Activity {
 
             @Override
             public void onScrolling(AbstractWheel wheel) {
-                Log.d("wheel offset", String.valueOf(wheel.getCurrentPosition()));
+//                Log.d("scroll occurred", "offset:" + String.valueOf(wheel.getCurrentPosition()) + " baseWidth:" + wheel.getBaseDimension());
             }
         });
 

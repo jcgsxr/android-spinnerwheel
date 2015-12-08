@@ -229,7 +229,7 @@ public abstract class AbstractWheel extends View {
     }
 
     public int getCurrentPosition() {
-        return mScroller.getFinalScrollerPosition();
+        return mScroller.getCurrentScrollerPosition();
     }
 
     @Override
