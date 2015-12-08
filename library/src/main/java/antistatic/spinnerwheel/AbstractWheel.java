@@ -34,10 +34,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
-import antistatic.spinnerwheel.adapters.WheelViewAdapter;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import antistatic.spinnerwheel.adapters.WheelViewAdapter;
 
 /**
  * Abstract spinner spinnerwheel view.
@@ -214,6 +215,14 @@ public abstract class AbstractWheel extends View {
                 }
             }
         });
+    }
+
+    public void setSnappingEnabled(boolean enabled) {
+        mScroller.setJustifyEnabled(enabled);
+    }
+
+    public int getScrollOffset() {
+        return mScrollingOffset;
     }
 
     @Override
@@ -412,14 +421,14 @@ public abstract class AbstractWheel extends View {
      *
      * @return width or height of the spinnerwheel
      */
-    abstract protected int getBaseDimension();
+    abstract public int getBaseDimension();
 
     /**
      * Returns base dimension of base item — width for horizontal spinnerwheel, height for vertical
      *
      * @return width or height of base item
      */
-    abstract protected int getItemDimension();
+    abstract public int getItemDimension();
 
     /**
      * Processes MotionEvent and returns relevant position — x for horizontal spinnerwheel, y for vertical
@@ -427,7 +436,7 @@ public abstract class AbstractWheel extends View {
      * @param event MotionEvent to be processed
      * @return relevant position of the MotionEvent
      */
-    abstract protected float getMotionEventPosition(MotionEvent event);
+    abstract public float getMotionEventPosition(MotionEvent event);
 
 
     //--------------------------------------------------------------------------

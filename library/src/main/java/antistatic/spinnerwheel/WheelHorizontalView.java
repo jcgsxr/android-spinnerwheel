@@ -166,7 +166,7 @@ public class WheelHorizontalView extends AbstractWheelView {
     }
 
     @Override
-    protected float getMotionEventPosition(MotionEvent event) {
+    public float getMotionEventPosition(MotionEvent event) {
         return event.getX();
     }
 
@@ -178,7 +178,7 @@ public class WheelHorizontalView extends AbstractWheelView {
     //--------------------------------------------------------------------------
 
     @Override
-    protected int getBaseDimension() {
+    public int getBaseDimension() {
         return getWidth();
     }
 
@@ -187,7 +187,7 @@ public class WheelHorizontalView extends AbstractWheelView {
      * @return the item width
      */
     @Override
-    protected int getItemDimension() {
+    public int getItemDimension() {
         if (itemWidth != 0) {
             return itemWidth;
         }

@@ -60,7 +60,7 @@ public abstract class AbstractWheelView extends AbstractWheel {
     protected static final int DEF_ITEM_OFFSET_PERCENT = 10;
 
     protected static final int DEF_ITEM_PADDING = 10;
-    
+
     protected static final int DEF_SELECTION_DIVIDER_SIZE = 2;
 
     //----------------------------------
@@ -143,7 +143,7 @@ public abstract class AbstractWheelView extends AbstractWheel {
     @Override
     protected void initAttributes(AttributeSet attrs, int defStyle) {
         super.initAttributes(attrs, defStyle);
-        
+
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.AbstractWheelView, defStyle, 0);
         mItemsDimmedAlpha = a.getInt(R.styleable.AbstractWheelView_itemsDimmedAlpha, DEF_ITEMS_DIMMED_ALPHA);
         mSelectionDividerActiveAlpha = a.getInt(R.styleable.AbstractWheelView_selectionDividerActiveAlpha, DEF_SELECTION_DIVIDER_ACTIVE_ALPHA);

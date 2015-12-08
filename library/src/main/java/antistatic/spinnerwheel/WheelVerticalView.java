@@ -155,7 +155,7 @@ public class WheelVerticalView extends AbstractWheelView {
     }
 
     @Override
-    protected float getMotionEventPosition(MotionEvent event) {
+    public float getMotionEventPosition(MotionEvent event) {
         return event.getY();
     }
 
@@ -166,7 +166,7 @@ public class WheelVerticalView extends AbstractWheelView {
     //--------------------------------------------------------------------------
 
     @Override
-    protected int getBaseDimension() {
+    public int getBaseDimension() {
         return getHeight();
     }
 
@@ -175,7 +175,7 @@ public class WheelVerticalView extends AbstractWheelView {
      * @return the item height
      */
     @Override
-    protected int getItemDimension() {
+    public int getItemDimension() {
         if (mItemHeight != 0) {
             return mItemHeight;
         }
